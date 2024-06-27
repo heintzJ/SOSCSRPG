@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUI"
         mc:Ignorable="d"
-        Title="RPG Tutorial" Height="768" Width="1024">
+        Title="RPG Tutorial" Height="768" Width="1024"
+        FontSize="11pt">
     <Grid>
         <Grid.RowDefinitions>
             <!--Three rows for the UI. First is as high as it needs to be-->
@@ -57,8 +58,43 @@
         </Grid>
         
         <!--Game Data-->
-        <Label Grid.Row="1" Grid.Column="1" Content="Game Data" Background="#E6EBD6"/>
-        
+        <Grid Grid.Row="1" Grid.Column="1" Background="#E6EBD6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!--We have 3* and 2*, which is 5 total. 3* is 3/5 width-->
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gainsboro" BorderThickness="1">
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" 
+                               HorizontalAlignment="Center" 
+                               Text="{Binding CurrentLocation.Name}"/>
+                    
+                    <Image Grid.Row="1" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           Height="125"
+                           Width="125"
+                           Source="{Binding CurrentLocation.ImageName}"/>
+                    
+                    <TextBlock Grid.Row="2" 
+                               HorizontalAlignment="Center" 
+                               Text="{Binding CurrentLocation.Description}"/>
+                </Grid>
+            </Border>
+        </Grid>
+
         <!--Inventory and Quests-->
         <Label Grid.Row="2" Grid.Column="0" Content="Inventory/Quests" Background="#B0917D"/>
         
