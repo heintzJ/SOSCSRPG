@@ -54,7 +54,7 @@
             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Level}"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Gold:"/>
             <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}"/>
-            <Button Grid.Row="6" Grid.Column="1" Content="Add XP" Click="ButtonBase_OnClick"/>
+            <Button Grid.Row="6" Grid.Column="1" Content="Add XP" Click="GainXP"/>
         </Grid>
         
         <!--Game Data-->
@@ -75,6 +75,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" 
@@ -91,6 +95,10 @@
                     <TextBlock Grid.Row="2" 
                                HorizontalAlignment="Center" 
                                Text="{Binding CurrentLocation.Description}"/>
+                    <Button Grid.Row="3" Content="Right" Click="ChangeLocation" Tag="(1,0)"/>
+                    <Button Grid.Row="4" Content="Left" Click="ChangeLocation" Tag="(-1,0)"/>
+                    <Button Grid.Row="5" Content="Up" Click="ChangeLocation" Tag="(0,1)"/>
+                    <Button Grid.Row="6" Content="Down" Click="ChangeLocation" Tag="(0,-1)"/>
                 </Grid>
             </Border>
         </Grid>
