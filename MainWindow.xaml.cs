@@ -66,7 +66,7 @@ namespace WPFUI
             }
         }
 
-        private Tuple<int, int> GetCoords(string tag)
+        private static Tuple<int, int> GetCoords(string tag)
         {
             string[] parts = tag.Trim('(',')').Split(',');
             int first = int.Parse(parts[0]);

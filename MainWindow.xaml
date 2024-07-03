@@ -95,6 +95,7 @@
                     <TextBlock Grid.Row="2" 
                                HorizontalAlignment="Center" 
                                Text="{Binding CurrentLocation.Description}"/>
+                    
                     <Button Grid.Row="3" Content="Right" Click="ChangeLocation" Tag="(1,0)"/>
                     <Button Grid.Row="4" Content="Left" Click="ChangeLocation" Tag="(-1,0)"/>
                     <Button Grid.Row="5" Content="Up" Click="ChangeLocation" Tag="(0,1)"/>
