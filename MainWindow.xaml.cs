@@ -30,48 +30,23 @@ namespace WPFUI
             DataContext = _gameSession;
         }
 
-        private void OutOfBounds()
+        private void MoveLocation(object sender, RoutedEventArgs e)
         {
-            string messageBoxText = "There is no room in that direction";
-            string caption = "Word Processor";
-            MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Warning;
-            MessageBoxResult result;
-
-            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-        }
-
-        private void GainXP(object sender, RoutedEventArgs e)
-        {
-            _gameSession.CurrentPlayer.ExperiencePoints += 10;
-            Debug.WriteLine(_gameSession.CurrentPlayer.ExperiencePoints);
-        }
-
-        private void ChangeLocation(object sender, RoutedEventArgs e)
-        {
-            string tag = (string)((Button)sender).Tag;
-            Tuple<int, int> coords = GetCoords(tag);
-            int newX = _gameSession.CurrentLocation.XCoordinate + coords.Item1;
-            int newY = _gameSession.CurrentLocation.YCoordinate + coords.Item2;
-            Debug.WriteLine($"{newX} {newY}");
-            if (_gameSession.CurrentWorld.LocationAt(newX, newY) != null)
+            if ((string)((Button)sender).Content == "North") {
+                _gameSession.MoveNorth();
+            }
+            else if ((string)((Button)sender).Content == "East")
             {
-                _gameSession.CurrentLocation = _gameSession.CurrentWorld.LocationAt(newX, newY);
-                Debug.WriteLine(_gameSession.CurrentLocation.Name);
-                Debug.WriteLine($"{_gameSession.CurrentLocation.XCoordinate}, {_gameSession.CurrentLocation.YCoordinate}");
+                _gameSession.MoveEast();
+            }
+            else if ((string)((Button)sender).Content == "South")
+            {
+                _gameSession.MoveSouth();
             }
             else
             {
-                OutOfBounds();
+                _gameSession.MoveWest();
             }
-        }
-
-        private static Tuple<int, int> GetCoords(string tag)
-        {
-            string[] parts = tag.Trim('(',')').Split(',');
-            int first = int.Parse(parts[0]);
-            int second = int.Parse(parts[1]);
-            return Tuple.Create(first, second );
         }
     }
 }

@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="RPG Tutorial" Height="768" Width="1024"
         FontSize="11pt">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <!--Three rows for the UI. First is as high as it needs to be-->
@@ -54,7 +57,6 @@
             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.Level}"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Gold:"/>
             <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}"/>
-            <Button Grid.Row="6" Grid.Column="1" Content="Add XP" Click="GainXP"/>
         </Grid>
         
         <!--Game Data-->
@@ -91,15 +93,11 @@
                            Height="125"
                            Width="125"
                            Source="{Binding CurrentLocation.ImageName}"/>
-                    
+
                     <TextBlock Grid.Row="2" 
-                               HorizontalAlignment="Center" 
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
                                Text="{Binding CurrentLocation.Description}"/>
-                    
-                    <Button Grid.Row="3" Content="Right" Click="ChangeLocation" Tag="(1,0)"/>
-                    <Button Grid.Row="4" Content="Left" Click="ChangeLocation" Tag="(-1,0)"/>
-                    <Button Grid.Row="5" Content="Up" Click="ChangeLocation" Tag="(0,1)"/>
-                    <Button Grid.Row="6" Content="Down" Click="ChangeLocation" Tag="(0,-1)"/>
                 </Grid>
             </Border>
         </Grid>
@@ -108,6 +106,47 @@
         <Label Grid.Row="2" Grid.Column="0" Content="Inventory/Quests" Background="#B0917D"/>
         
         <!--Comabt and Movement-->
-        <Label Grid.Row="2" Grid.Column="1" Content="Combat/Movement Controls" Background="#B7C09A"/>
+        <Grid Grid.Row="2" Grid.Column="1" Background="Lavender">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="255" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="1" 
+                    Height="25" Width="65" Margin="10"
+                    Click="MoveLocation"
+                    Visibility="{Binding HasLocationNorth, Converter={StaticResource BooleanToVisibility}}"
+                    Content="North"/>
+                <Button Grid.Row="1" Grid.Column="0" 
+                    Height="25" Width="65" Margin="10"
+                    Click="MoveLocation"
+                    Visibility="{Binding HasLocationWest, Converter={StaticResource BooleanToVisibility}}"
+                    Content="West"/>
+                <Button Grid.Row="1" Grid.Column="2" 
+                    Height="25" Width="65" Margin="10"
+                    Click="MoveLocation"
+                    Visibility="{Binding HasLocationEast, Converter={StaticResource BooleanToVisibility}}"
+                    Content="East"/>
+                <Button Grid.Row="2" Grid.Column="1" 
+                    Height="25" Width="65" Margin="10"
+                    Click="MoveLocation"
+                    Visibility="{Binding HasLocationSouth, Converter={StaticResource BooleanToVisibility}}"
+                    Content="South"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
