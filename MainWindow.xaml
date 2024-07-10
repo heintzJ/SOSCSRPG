@@ -120,6 +120,22 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
+
+                <TabItem Header="Quests">
+                    <!--A DataGrid is used to display a list of interactive items on the screen-->
+                    <DataGrid ItemsSource="{Binding CurrentPlayer.Quests}"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Quest Name"
+                                Binding="{Binding PlayerQuest.Name}"
+                                Width="*"/>
+                            <DataGridTextColumn Header="Progess"
+                                Binding="{Binding IsCompleted}"
+                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
             </TabControl>
         </Grid>
 
