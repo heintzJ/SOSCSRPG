@@ -44,6 +44,11 @@ namespace WPFUI
             }
         }
 
+        private void OnClick_AttackMonster(object sender, RoutedEventArgs e)
+        {
+            _gameSession.AttackCurrentMonster();
+        }
+
         private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
         {
             // show the message
