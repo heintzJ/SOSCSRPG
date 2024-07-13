@@ -53,5 +53,18 @@ namespace WPFUI
             GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
             GameMessages.ScrollToEnd();
         }
+
+        private void OnClick_DisplayTradeScreen(object sender, RoutedEventArgs e)
+        {
+            TradeScreen tradeScreen = new TradeScreen();
+            // set the owner to the main window
+            tradeScreen.Owner = this;
+            // set the object of the window to a GameSession object
+            // _gameSession has already been created in memory, so this creates a pointer to that location
+            // This enables any changes made in tradeScreen to also be made in the main window (amount of gold)
+            tradeScreen.DataContext = _gameSession;
+            // ShowDialog() makes the tradeScreen modal and stops the player from accessing other windows
+            tradeScreen.ShowDialog();
+        }
     }
 }
