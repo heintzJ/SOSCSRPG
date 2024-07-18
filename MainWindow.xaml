@@ -156,15 +156,19 @@
             <TabControl>
                 <TabItem Header="Inventory">
                     <!--A DataGrid is used to display a list of interactive items on the screen-->
-                    <DataGrid ItemsSource="{Binding CurrentPlayer.Inventory}"
+                    <DataGrid ItemsSource="{Binding CurrentPlayer.GroupedInventory}"
                               AutoGenerateColumns="False"
                               HeadersVisibility="Column">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Item Name"
-                                                Binding="{Binding Name}"
+                                                Binding="{Binding Item.Name}"
                                                 Width="*"/>
+                            <DataGridTextColumn Header="Qty"
+                                                IsReadOnly="True"
+                                                Width="Auto"
+                                                Binding="{Binding Quantity}"/>
                             <DataGridTextColumn Header="Price"
-                                                Binding="{Binding Price}"
+                                                Binding="{Binding Item.Price}"
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -216,7 +220,7 @@
                           ItemsSource="{Binding CurrentPlayer.Weapons}"
                           SelectedItem="{Binding CurrentWeapon}"
                           DisplayMemberPath="Name"
-                          SelectedValuePath="ID"/>
+                          SelectedValuePath="ItemTypeID"/>
                 <Button Grid.Row="0" Grid.Column="2"
                         Content="Use"
                         Click="OnClick_AttackMonster"/>
