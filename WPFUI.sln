@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFUI", "WPFUI.csproj", "{BD205F52-CAAA-4CC1-BD5D-CED6CB36BCC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "..\Engine\Engine.csproj", "{C04F33D6-5236-4376-9BE3-3FBFC681F1B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "..\Engine\Engine.csproj", "{C04F33D6-5236-4376-9BE3-3FBFC681F1B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "..\TestEngine\TestEngine.csproj", "{CF5DD673-F503-4E4E-B479-937C7F91F6D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C04F33D6-5236-4376-9BE3-3FBFC681F1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C04F33D6-5236-4376-9BE3-3FBFC681F1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C04F33D6-5236-4376-9BE3-3FBFC681F1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5DD673-F503-4E4E-B479-937C7F91F6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5DD673-F503-4E4E-B479-937C7F91F6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5DD673-F503-4E4E-B479-937C7F91F6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5DD673-F503-4E4E-B479-937C7F91F6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
